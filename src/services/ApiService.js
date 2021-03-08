@@ -1,6 +1,9 @@
 import axios from "axios";
 
 const ApiService = {
+  init() {
+    axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
+  },
   get(resource) {
     return new Promise((resolve, reject) => {
       axios

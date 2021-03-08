@@ -4,8 +4,7 @@ import ApiService from "../../../services/ApiService";
 export function getUserList() {
   return function (dispatch) {
     return new Promise((resolve, reject) => {
-      let url = "https://jsonplaceholder.typicode.com/users";
-      ApiService.get(url)
+      ApiService.get(`/users`)
         .then((response) => {
           dispatch({
             type: actionTypes.GET_USER_LIST,
@@ -23,8 +22,7 @@ export function getUserList() {
 export function insertUser(params) {
   return function (dispatch) {
     return new Promise((resolve, reject) => {
-      let url = `https://jsonplaceholder.typicode.com/users`;
-      ApiService.post(url, params)
+      ApiService.post(`/users`, params)
         .then((response) => {
           dispatch({
             type: actionTypes.INSERT_USER,
@@ -42,8 +40,7 @@ export function insertUser(params) {
 export function updateUser(params) {
   return function (dispatch) {
     return new Promise((resolve, reject) => {
-      let url = `https://jsonplaceholder.typicode.com/users/${params.id}`;
-      ApiService.put(url, params)
+      ApiService.put(`/users/${params.id}`, params)
         .then((response) => {
           dispatch({
             type: actionTypes.UPDATE_USER,
@@ -58,12 +55,10 @@ export function updateUser(params) {
   };
 }
 
-
 export function deleteUser(params) {
   return function (dispatch) {
     return new Promise((resolve, reject) => {
-      let url = `https://jsonplaceholder.typicode.com/users/${params.id}`;
-      ApiService.delete(url)
+      ApiService.delete(`/users/${params.id}`)
         .then((response) => {
           dispatch({
             type: actionTypes.DELETE_USER,
