@@ -1,3 +1,1 @@
-//#region 
-export const GET_USER_LIST = "getUserList"
-//#endregion
+export const GET_USER_LIST = "GET_USER_LIST";

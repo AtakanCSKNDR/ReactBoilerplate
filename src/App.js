@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as userActions from "./redux/actions/modules/userActions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.actions.getUserList();
+  }
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.props.users.map((user) => (
+            <li>{user.name}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+function mapStateToProps(state) {
+  return {
+    users: state.userListReducer,
+  };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      getUserList: bindActionCreators(userActions.getUserList, dispatch),
+    },
+  };
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
