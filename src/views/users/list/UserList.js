@@ -3,61 +3,37 @@ import "./UserList.css";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as userActions from "../../../redux/actions/modules/userActions";
+import { Button, Table, PageHeader } from "antd";
 
 class UserList extends Component {
+  state = {
+    columns: [
+      { title: "Name", dataIndex: "name", key: "name" },
+      { title: "Username", dataIndex: "username" , key: "name" },
+      { title: "Email", dataIndex: "email" , key: "name"  },
+      { title: "Phone", dataIndex: "phone" , key: "phone"  },
+    ],
+  };
   componentDidMount() {
     this.props.actions.getUserList();
   }
-  state = {
-    newUser: {
-      email: "atakan@example.biz",
-      name: "Atakan",
-      phone: "5352226655",
-      username: "ACC",
-      website: "github.com",
-    },
-    updateUser: {
-      email: "atakan@example.biz",
-      name: "Atakan",
-      phone: "5352226655",
-      username: "ACC",
-      website: "github.com",
-      id: 1,
-    },
-  };
+  nextPath(path) {
+    this.props.history.push(path);
+  }
   render() {
     return (
       <div>
-        <button
-          onClick={() => this.props.actions.insertUser(this.state.newUser)}
-        >
-          Ekle
-        </button>
-        <button
-          onClick={() => this.props.actions.updateUser(this.state.updateUser)}
-        >
-          Güncelle
-        </button>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Phone</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.users.map((user) => (
-              <tr key={user.id}>
-                <th>{user.name}</th>
-                <th>{user.username}</th>
-                <th>{user.email}</th>
-                <th>{user.phone}</th>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <PageHeader
+          className="site-page-header"
+          onBack={() => null}
+          title="User List"
+          extra={[
+            <Button type="primary" onClick={() => this.nextPath("/newuser")}>
+              Add
+            </Button>,
+          ]}
+        />
+        <Table dataSource={this.props.users} columns={this.state.columns} />
       </div>
     );
   }

@@ -1,0 +1,30 @@
+.sidebar {
+  height: 100vh;
+}
+.site-layout {
+  height: 100vh;
+  overflow: auto;
+}
+#components-layout-demo-custom-trigger .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#components-layout-demo-custom-trigger .trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+}
+.logo img {
+  width: 100%;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
