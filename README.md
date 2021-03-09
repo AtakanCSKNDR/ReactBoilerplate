@@ -13,13 +13,13 @@ Vue-Boilerplate requires [Node.js](https://nodejs.org/) to run.
 Install the dependencies and run the project in development.
 
 ```sh
-$ cd Vue-Boilerplate
+$ cd ReactBoilerplate
 $ npm install
-$ npm run dev
+$ npm start
 ```
 
 # Contents
-Vue-Boilerplate uses a number of open source projects to work properly:
+ReactBoilerplate uses a number of open source projects to work properly:
 
 * [React.js](https://reactjs.org/) - Framework for building user interfaces.
 * [Ant Design](https://ant.design/) - Ant Design is a UI Library.
